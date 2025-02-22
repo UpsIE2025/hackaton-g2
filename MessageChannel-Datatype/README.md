@@ -16,3 +16,34 @@ DADO un sistema con múltiples tipos de datos, CUANDO un tipo de datos nuevo nec
 
 DADO un intento de envío de datos en un canal incorrecto, CUANDO el sistema valide el tipo de datos, ENTONCES deberá rechazar la operación y generar una alerta o error.
 
+# Ejecutar y probar:
+
+1. Correr los contenedores:
+`
+docker-compose up -d
+`
+2. Crear el entoro virtual e instalar requerimientos:
+`
+python -m venv env
+`
+
+    En Windows:
+`env\Scripts\activate
+`
+    
+    En Linux/Mac:
+`
+source env/bin/activate
+`
+3. Instalar requerimientos:
+`
+pip install -r requirements.txt
+`
+4. Ejecutar el consumidor:
+`
+python consumer.py
+`
+5. Ejecutar el productor:
+`
+python producer.py
+`
