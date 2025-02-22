@@ -61,7 +61,9 @@ services:
       kafka-topics --create --if-not-exists --topic pr-channel-datatype-transacciones --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
 
       kafka-topics --create --if-not-exists --topic dc-invalid-message --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
-      
+      kafka-topics --create --if-not-exists --topic dc-user-events --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
+      kafka-topics --create --if-not-exists --topic dc-recomendations-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
+      kafka-topics --create --if-not-exists --topic dc-recomendations-response --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       
       kafka-topics --create --if-not-exists --topic gj-failed-messages --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&   
