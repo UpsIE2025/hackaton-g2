@@ -11,7 +11,8 @@ const kafka = new Kafka({
 
 const producer = kafka.producer();
 const consumer = kafka.consumer({ groupId: 'message-group' });
-const failedMessagesTopic = 'gj-failed-messages';
+const topicResponseMessage = 'gj-reply1';
+const topicRequestMessage = 'gj-request';
 
 async function sendMessage(topic, message) {
   await producer.connect();
@@ -22,15 +23,17 @@ async function sendMessage(topic, message) {
   await producer.disconnect();
 }
 
+// Escucha el topico gj-reply1
 async function processMessages() {
   await consumer.connect();
-  await consumer.subscribe({ topic: failedMessagesTopic, fromBeginning: true });
+  await consumer.subscribe({ topic: topicResponseMessage, fromBeginning: true });
 
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       try {
-        const msg = JSON.parse(message.value.toString());
-        console.log(`Se inicia el reproceso del mensaje:`, msg);                
+        const msg = await JSON.parse(message.value.toString());
+        console.log(`Respuesta recibida en el requester 1:`, msg);  
+        await heartbeat()              
       } catch (error) {
         console.error(`Error procesando mensaje: ${error.message}`);        
       }
@@ -39,23 +42,16 @@ async function processMessages() {
 }
 
 
-// Enviar el mensaje con la siguiente estructura { content: message, fail: true o false }
-app.post("/get-request", async (req, res) => {  
-  const  data  = req.body;
-  
-  try {    
-    let responseMessage = {}
-    if (data.fail) {
-      console.error ("La solicitud no pudo ser procesada. Se reintentará mas tarde!")
-      responseMessage = { success: true, message: 'Mensaje publicado correctamente' }
-      responseMessage = "La solicitud no pudo ser procesada se realizará el reintento mas tarde!"
-      await sendMessage(failedMessagesTopic, data);
-    } else {
-      responseMessage = { success: false, message: "La solicitud ha sido procesada exitosamente...!"}
-      console.log ("La solicitud ha sido procesada exitosamente...!")
-    }
-    
-    res.status(200).json(responseMessage);
+// Enviar el mensaje con la siguiente estructura { content: message, response: gj-reply1 }
+app.post("/publish", async (req, res) => {  
+  const  data  = {
+    "content": req.body,
+    "response": topicResponseMessage
+  }
+
+  try {        
+    await sendMessage(topicRequestMessage, data);     
+    res.status(200).json({ success: true, message: "Requester 1 - Mensaje publicado exitosamente...!"});
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
