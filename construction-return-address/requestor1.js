@@ -10,7 +10,7 @@ const kafka = new Kafka({
 });
 
 const producer = kafka.producer();
-const consumer = kafka.consumer({ groupId: 'message-group' });
+const consumer = kafka.consumer({ groupId: 'message-group1' });
 const topicResponseMessage = 'gj-reply1';
 const topicRequestMessage = 'gj-request';
 
@@ -32,8 +32,7 @@ async function processMessages() {
     eachMessage: async ({ topic, partition, message }) => {
       try {
         const msg = await JSON.parse(message.value.toString());
-        console.log(`Respuesta recibida en el requester 1:`, msg);  
-        await heartbeat()              
+        console.log(`Respuesta recibida en el requester 1:`, msg);          
       } catch (error) {
         console.error(`Error procesando mensaje: ${error.message}`);        
       }
