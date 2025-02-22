@@ -1,5 +1,5 @@
 const express = require('express');
-const { sendCourseAssignment } = require('./src/services/producer');
+const { sendCourseAssignment } = require('./services/producer');
 
 const app = express();
 app.use(express.json());
@@ -36,7 +36,7 @@ app.listen(PORT, () => {
 });
 
 // Inicializar consumidores
-const { startConsumer } = require('./src/services/consumer');
+const { startConsumer } = require('./services/consumer');
 
 // Iniciar 3 consumidores
 for (let i = 1; i <= 3; i++) {

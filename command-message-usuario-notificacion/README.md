@@ -22,6 +22,17 @@ Esta implementación sigue el patrón Command Message resumidas a continuación:
 
 1. Flujo del Proceso
 
+Resumen flujo:
+    Cliente  ->> API: POST /api/messages
+    API      ->> Producer: sendMessageNotification()
+    Producer ->> Kafka: Envía comando
+    Kafka    ->> Consumer: Consume mensaje
+    Consumer ->> Redis: Intenta obtener lock
+    Redis    ->> Consumer: Otorga/Rechaza lock
+    Consumer ->> Consumer: Procesa notificación
+    Consumer ->> Redis: Guarda estado
+    API      ->> Cliente: Respuesta con messageId
+
 Envío del Mensaje:
 
 * El cliente hace una petición POST con senderId, receiverId y content
@@ -86,20 +97,3 @@ json{
 * El comando siendo enviado a Kafka
 * El consumidor recibiendo y procesando el comando
 
-Resumen flujo:
-participant C as Cliente
-    participant A as API
-    participant P as Producer
-    participant K as Kafka
-    participant Con as Consumer
-    participant R as Redis
-
-    C->>A: POST /api/messages
-    A->>P: sendMessageNotification()
-    P->>K: Envía comando
-    K-->>Con: Consume mensaje
-    Con->>R: Intenta obtener lock
-    R-->>Con: Otorga/Rechaza lock
-    Con->>Con: Procesa notificación
-    Con->>R: Guarda estado
-    A-->>C: Respuesta con messageId
