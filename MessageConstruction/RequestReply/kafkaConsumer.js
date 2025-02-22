@@ -26,10 +26,8 @@ async function start() {
   await consumer.connect();
   console.log("Conectado al consumidor de Kafka");
 
-  // Suscripción al tema de eventos de usuario
   await consumer.subscribe({ topic: 'dc-user-events', fromBeginning: true });
 
-  // Consumir los mensajes del tema 'dc-user-events'
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       const event = JSON.parse(message.value.toString());
@@ -37,15 +35,12 @@ async function start() {
 
       console.log(`Evento recibido: ${action} de usuario ${userId} en el producto ${productId}`);
 
-      // Generar recomendaciones para el usuario
       const recommendations = generateRecommendations(userId, productId);
 
-      // Almacenar las recomendaciones en Redis
-      await redis.set(`user:${userId}:recommendations`, JSON.stringify(recommendations), 'EX', 3600); // Expira en 1 hora
+      await redis.set(`user:${userId}:recommendations`, JSON.stringify(recommendations), 'EX', 3600); 
 
       console.log(`Recomendaciones para usuario ${userId}:`, recommendations);
 
-      // Enviar mensaje con las recomendaciones a un tema de Kafka (por ejemplo, 'dc-recomendations-topic')
       await producer.send({
         topic: 'dc-recomendations-topic',
         messages: [
@@ -63,5 +58,4 @@ async function start() {
   });
 }
 
-// Iniciar el servicio
 start().catch(console.error);
