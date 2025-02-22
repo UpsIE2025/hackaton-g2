@@ -6,7 +6,7 @@ const kafka = new Kafka({
 });
 
 const producer = kafka.producer();
-const consumer = kafka.consumer({ groupId: 'message-group' });
+const consumer = kafka.consumer({ groupId: 'message-group-replier' });
 const topicRequestMessage = 'gj-request';
 
 async function sendMessage(topic, message) {
@@ -30,8 +30,7 @@ async function processMessages() {
         const topicResponse = await msg.response
         console.log(`Se proceso el mensaje:`, msg);         
 
-        await sendMessage(topicResponse, {content: `Solicitud procesada con éxito`})
-        await heartbeat()
+        await sendMessage(topicResponse, {content: `Solicitud procesada con éxito`})        
         console.log(`Respuesta publicada con exito:`, msg);         
 
       } catch (error) {
