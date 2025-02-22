@@ -63,14 +63,15 @@ services:
       kafka-topics --create --if-not-exists --topic pr-construction-eventmessage-evento-procesado --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
 
       kafka-topics --create --if-not-exists --topic dc-invalid-message --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
-      kafka-topics --create --if-not-exists --topic pv-course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
-      kafka-topics --create --if-not-exists --topic gj-failed-messages --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
+      kafka-topics --create --if-not-exists --topic pv-course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
       kafka-topics --create --if-not-exists --topic pv-message-notifications --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
       
       kafka-topics --create --if-not-exists --topic course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       
-      kafka-topics --create --if-not-exists --topic gj-failed-messages --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&   
-      
+      kafka-topics --create --if-not-exists --topic gj-failed-messages --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&         
+      kafka-topics --create --if-not-exists --topic gj-request --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
+      kafka-topics --create --if-not-exists --topic gj-reply1 --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
+      kafka-topics --create --if-not-exists --topic gj-reply2 --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&            
       wait
       "
 
