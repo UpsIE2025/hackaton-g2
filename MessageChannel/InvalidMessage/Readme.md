@@ -31,11 +31,6 @@ Imagina que una empresa de logística gestiona un sistema de notificaciones para
    - **CUANDO** un administrador acceda a estos mensajes,  
    - **ENTONCES** podrá analizarlos y, si es posible, corregir y reenviar el mensaje a su canal de destino original.
 
-### **Ejemplo de la Vida Real**
-Un repartidor escanea un paquete y el sistema de notificaciones intenta registrar la actualización. Sin embargo, por un error de conexión, el mensaje llega sin el identificador del paquete.  
-**DADO** un mensaje recibido sin información clave,  
-**CUANDO** el sistema detecte la ausencia de datos esenciales,  
-**ENTONCES** lo moverá automáticamente al canal de mensajes no válidos para su posterior revisión.
 
 ---
 
