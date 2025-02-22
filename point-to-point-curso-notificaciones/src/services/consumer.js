@@ -21,7 +21,7 @@ async function startConsumer(consumerId) {
     await consumer.subscribe({ topic: 'course-assignments', fromBeginning: true });
 
     await consumer.run({
-      eachMessage: async ({ topic, partition, message }) => {
+      eachMessage: async ({ message }) => {
         const messageData = JSON.parse(message.value.toString());
         const lockKey = `lock:${messageData.messageId}`;
         
