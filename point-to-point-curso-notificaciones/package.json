@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/api.js",
     "dev": "nodemon src/api.js",
+    "example": "node src/examples/cursos-usage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

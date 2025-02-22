@@ -1,6 +1,6 @@
 class MessageCommand {
   constructor(senderId, receiverId, content) {
-    this.messageId = `msg_${Date.now()}`; // Identificador único del mensaje
+    this.messageId = `msg_${Date.now()}`; // Genera un ID en creacion de comando
     this.senderId = senderId;
     this.receiverId = receiverId;
     this.content = content;

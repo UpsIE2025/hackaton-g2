@@ -21,17 +21,16 @@ async function sendMessageNotification(senderId, receiverId, content) {
       topic: 'pv-message-notifications',
       messages: [
         { 
-          // Usar receiverId como key para particionamiento
           key: receiverId.toString(),
           value: JSON.stringify(command.toJSON())
         }
       ],
     });
 
-    console.log(`Notification command sent for message ${command.messageId}`);
+    console.log(`Comando de notificación enviado para el mensaje ${command.messageId}`);
     return command.messageId;
   } catch (error) {
-    console.error('Error sending notification:', error);
+    console.error('Error al enviar la notificación:', error);
     throw error;
   }
 }

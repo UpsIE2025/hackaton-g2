@@ -32,10 +32,10 @@ async function startConsumer() {
           );
 
           if (acquired) {
-            // Simular envío de notificación
-            console.log(`🔔 Notification sent to user ${notification.receiverId}:`);
-            console.log(`   From: User ${notification.senderId}`);
-            console.log(`   Message: ${notification.content}`);
+            // Simulación de envío de notificación
+            console.log(`🔔 Notificación enviada al usuario ${notification.receiverId}:`);
+            console.log(`   De: Usuario ${notification.senderId}`);
+            console.log(`   Mensaje: ${notification.content}`);
             
             // Registrar notificación como enviada
             await redis.set(
@@ -49,19 +49,21 @@ async function startConsumer() {
             // Liberar el lock
             await redis.del(lockKey);
           } else {
-            console.log(`Notification ${notification.messageId} already processed`);
+            console.log(`Notificación ${notification.messageId} ya procesada`);
           }
         } catch (error) {
-          console.error(`Error processing notification ${notification.messageId}:`, error);
+          console.error(`Error al procesar la notificación ${notification.messageId}:`, error);
           // Asegurar que el lock se libere en caso de error
           await redis.del(lockKey);
         }
       },
     });
 
-    console.log('Notification consumer started successfully');
+    console.log('Consumidor de notificaciones iniciado correctamente');
   } catch (error) {
-    console.error('Error starting consumer:', error);
+    console.error('Error al iniciar el consumidor:', error);
     throw error;
   }
 }
+
+module.exports = { startConsumer };
