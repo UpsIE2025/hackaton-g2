@@ -1,0 +1,18 @@
+# Historia de Usuario Técnica
+
+COMO arquitecto de software,
+
+QUIERO que el sistema utilice un canal de comunicación separado para cada tipo de datos,
+
+PARA garantizar que los datos sean transmitidos y recibidos de manera organizada y sin ambigüedades.
+
+# Criterios de Aceptación
+
+DADO que un remitente necesita enviar datos, CUANDO determine el tipo de datos a enviar, ENTONCES deberá seleccionar el canal correspondiente.
+
+DADO que el sistema reciba datos en un canal específico, CUANDO el receptor obtenga los datos de ese canal, ENTONCES deberá inferir correctamente su tipo sin necesidad de información adicional.
+
+DADO un sistema con múltiples tipos de datos, CUANDO un tipo de datos nuevo necesite ser transmitido, ENTONCES se deberá habilitar un nuevo canal exclusivo para ese tipo de datos.
+
+DADO un intento de envío de datos en un canal incorrecto, CUANDO el sistema valide el tipo de datos, ENTONCES deberá rechazar la operación y generar una alerta o error.
+
