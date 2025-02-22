@@ -24,7 +24,7 @@ async function sendCourseAssignment(studentId, courseId) {
 
     // Enviar mensaje al tópico
     await producer.send({
-      topic: 'course-assignments',
+      topic: 'pv-course-assignments',
       messages: [
         { 
           key: studentId.toString(),

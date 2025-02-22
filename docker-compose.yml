@@ -54,8 +54,9 @@ services:
       sleep 10 &&
       kafka-topics --create --if-not-exists --topic data-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic dc-invalid-message --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
-      kafka-topics --create --if-not-exists --topic course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
+      kafka-topics --create --if-not-exists --topic pv-course-assignments --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic gj-failed-messages --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
+      kafka-topics --create --if-not-exists --topic pv-message-notifications --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&      
       wait
       "
 
