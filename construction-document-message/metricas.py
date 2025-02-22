@@ -13,23 +13,21 @@ REDIS_PROCESSED_KEY = "mensajes_procesados"
 
 # Cliente Redis
 redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
-app = FastAPI()
 
-@app.get("/metricas/")
-async def obtener_metricas():
+
+
+def obtener_metricas():
     """
     Obtiene métricas de envíos, entregas y fallos.
     """
     total_mensajes = redis_client.hlen(REDIS_PROCESSED_KEY)
     entregados = sum(1 for estado in redis_client.hvals(REDIS_PROCESSED_KEY) if estado == "entregado")
     fallos = total_mensajes - entregados
-    return {
-        "total_mensajes": total_mensajes,
-        "entregados": entregados,
-        "fallos": fallos
-    }
+    print(f"Total de mensajes: {total_mensajes}")
+    print(f"Mensajes entregados: {entregados}")
+    print(f"Mensajes con fallos: {fallos}")
+
 
 # Ejecutar la aplicación FastAPI
 if __name__ == "__main__":
-   
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+   obtener_metricas()

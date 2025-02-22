@@ -1,7 +1,10 @@
 # Caso de Implementación: Sistema de Notificaciones para Ofertas Personalizadas con Kafka y Redis
 
 
-Una empresa de comercio electrónico quiere mejorar su estrategia de marketing enviando ofertas personalizadas a sus clientes en función de su comportamiento de compra. Para ello, implementa un sistema basado en el patrón publish/subscribe con Apache Kafka y Redis, asegurando que cada cliente reciba solo las ofertas que le corresponden y sin duplicaciones.
+Una empresa de comercio electrónico quiere mejorar su estrategia de marketing enviando ofertas personalizadas a sus clientes 
+en función de su comportamiento de compra. Para ello,
+ implementa un sistema basado en el patrón publish/subscribe con Apache Kafka y Redis, 
+ asegurando que cada cliente reciba solo las ofertas que le corresponden y sin duplicaciones.
 
 
 

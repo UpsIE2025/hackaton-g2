@@ -1,5 +1,7 @@
 ## Contexto
-Imagina que trabajas en una empresa de comercio electrónico que envía ofertas personalizadas a sus clientes. Estas ofertas pueden ser enviadas a través de diferentes canales: Email, SMS o WhatsApp. El sistema debe ser confiable, escalable y permitir que las ofertas se procesen de manera asíncrona.
+Imagina que trabajas en una empresa de comercio electrónico que envía ofertas personalizadas a sus clientes.
+ Estas ofertas pueden ser enviadas a través de diferentes canales: Email, SMS o WhatsApp. 
+ El sistema debe ser confiable, escalable y permitir que las ofertas se procesen de manera asíncrona.
 
 
 
