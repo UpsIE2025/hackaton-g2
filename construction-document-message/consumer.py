@@ -50,16 +50,14 @@ def enviar_mensaje_por_canal(canal: str, usuario_id: str, mensaje: str) -> bool:
     print(f"Intentando enviar mensaje a {usuario_id} por {canal}...")
     # Simulación de envío (aquí puedes integrar APIs reales de Email, SMS, WhatsApp)
     if canal == "whatsapp":
-        return True  # Simulación: WhatsApp siempre funciona
+        return True  
     elif canal == "sms":
-        return False  # Simulación: SMS falla
+        return False  
     else:
-        return True  # Simulación: Email siempre funciona
+        return True 
 
 def reintentar_por_otro_canal(usuario_id: str, mensaje: str, intentos: int):
-    """
-    Reintenta enviar el mensaje por otro canal en caso de fallo.
-    """
+  
     canales = ["whatsapp", "sms", "email"]
     for canal in canales:
         if enviar_mensaje_por_canal(canal, usuario_id, mensaje):

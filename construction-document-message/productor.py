@@ -28,4 +28,4 @@ async def enviar_oferta(usuario_id: str, mensaje: str, canal_prioritario: str):
     await producer.stop()
 
 # Ejemplo de uso
-asyncio.run(enviar_oferta("123", "¡Oferta especial para ti!", "whatsapp"))
+asyncio.run(enviar_oferta("1235445", "¡Oferta especial para ti del 10%!", "sms"))
