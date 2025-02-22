@@ -34,6 +34,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    hostname: kafka
     container_name: kafka
     restart: always
     ports:
