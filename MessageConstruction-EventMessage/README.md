@@ -20,10 +20,6 @@ DADO que el mensaje de evento es enviado,
 CUANDO el observador no esté disponible,
 ENTONCES el sistema de mensajería deberá retener el mensaje hasta que el observador pueda procesarlo.
 
-DADO un evento crítico,
-CUANDO el observador no pueda procesar el mensaje en el primer intento,
-ENTONCES el sistema deberá reintentarlo según una política de reintentos configurada.
-
 ## Ejemplo de la Vida Real
 
 Imagina un sistema de pedidos en un e-commerce. Cuando un usuario realiza una compra, el sistema de órdenes (sujeto) genera un evento "Pedido Creado" y lo envía a un bus de eventos (Kafka, RabbitMQ, etc.). El sistema de facturación (observador) escucha estos eventos y, al recibir el mensaje, genera la factura correspondiente. Si el sistema de facturación está inactivo, el mensaje se almacena en la cola hasta que pueda procesarlo.
