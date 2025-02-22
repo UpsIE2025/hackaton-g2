@@ -49,7 +49,7 @@ app.post("/get-request", async (req, res) => {
       console.error ("La solicitud no pudo ser procesada. Se reintentará mas tarde!")
       responseMessage = { success: true, message: 'Mensaje publicado correctamente' }
       responseMessage = "La solicitud no pudo ser procesada se realizará el reintento mas tarde!"
-      await sendMessage('messages', data);
+      await sendMessage(failedMessagesTopic, data);
     } else {
       responseMessage = { success: false, message: "La solicitud ha sido procesada exitosamente...!"}
       console.log ("La solicitud ha sido procesada exitosamente...!")

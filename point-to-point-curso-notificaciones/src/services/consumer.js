@@ -18,7 +18,7 @@ async function startConsumer(consumerId) {
     const consumer = kafka.consumer({ groupId: 'course-notification-group' });
     
     await consumer.connect();
-    await consumer.subscribe({ topic: 'course-assignments', fromBeginning: true });
+    await consumer.subscribe({ topic: 'pv-course-assignments', fromBeginning: true });
 
     await consumer.run({
       eachMessage: async ({ message }) => {

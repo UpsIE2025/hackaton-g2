@@ -1,12 +1,12 @@
 {
-  "name": "point-to-point-curso-notificaciones",
+  "name": "command-message-usuario-notificacion",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/api.js",
     "dev": "nodemon src/api.js",
-    "example": "node src/examples/cursos-usage.js",
+    "example": "node src/examples/messenger-usage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
