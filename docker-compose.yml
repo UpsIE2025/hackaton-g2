@@ -54,6 +54,7 @@ services:
       sleep 10 &&
       kafka-topics --create --if-not-exists --topic data-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic js-channel-oferta --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
+      kafka-topics --create --if-not-exists --topic js-construction-oferta --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 &&
       wait
       "
 
