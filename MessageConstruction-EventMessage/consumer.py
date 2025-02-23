@@ -3,8 +3,8 @@ import redis
 import json
 
 KAFKA_BROKER = "localhost:9092"
-INPUT_TOPIC = "nuevo-evento"
-OUTPUT_TOPIC = "evento-procesado"
+INPUT_TOPIC = "pr-construction-eventmessage-nuevo-evento"
+OUTPUT_TOPIC = "pr-construction-eventmessage-evento-procesado"
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 REDIS_DB = 0

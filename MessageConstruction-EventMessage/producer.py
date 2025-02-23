@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 import json
 
 KAFKA_BROKER = "localhost:9092"
-TOPIC = "nuevo-evento"
+TOPIC = "pr-construction-eventmessage-nuevo-evento"
 
 def create_kafka_producer():
     return KafkaProducer(
